@@ -16,6 +16,7 @@
 #include "GameModes/LyraGameMode.h"
 #include "LyraLogChannels.h"
 #include "LyraPlayerController.h"
+#include "SaveStatics.h"
 #include "Messages/LyraVerbMessage.h"
 #include "Net/UnrealNetwork.h"
 
@@ -54,6 +55,12 @@ void ALyraPlayerState::PreInitializeComponents()
 void ALyraPlayerState::Reset()
 {
 	Super::Reset();
+}
+
+void ALyraPlayerState::BeginPlay()
+{
+	Super::BeginPlay();
+	USaveStatics::RegisterSingletonSaveable(this, GetWorld());
 }
 
 void ALyraPlayerState::ClientInitialize(AController* C)

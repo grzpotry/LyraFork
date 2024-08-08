@@ -5,6 +5,7 @@
 #include "Camera/LyraCameraAssistInterface.h"
 #include "CommonPlayerController.h"
 #include "Teams/LyraTeamAgentInterface.h"
+#include "SaveableInterface.h"
 
 #include "LyraPlayerController.generated.h"
 
@@ -28,7 +29,7 @@ struct FFrame;
  *	The base player controller class used by this project.
  */
 UCLASS(Config = Game, Meta = (ShortTooltip = "The base player controller class used by this project."))
-class LYRAGAME_API ALyraPlayerController : public ACommonPlayerController, public ILyraCameraAssistInterface, public ILyraTeamAgentInterface
+class LYRAGAME_API ALyraPlayerController : public ACommonPlayerController, public ILyraCameraAssistInterface, public ILyraTeamAgentInterface, public ISaveableInterface
 {
 	GENERATED_BODY()
 

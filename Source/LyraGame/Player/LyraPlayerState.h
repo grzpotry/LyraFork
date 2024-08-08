@@ -4,6 +4,7 @@
 
 #include "AbilitySystemInterface.h"
 #include "ModularPlayerState.h"
+#include "SaveableInterface.h"
 #include "System/GameplayTagStack.h"
 #include "Teams/LyraTeamAgentInterface.h"
 
@@ -46,7 +47,7 @@ enum class ELyraPlayerConnectionType : uint8
  *	Base player state class used by this project.
  */
 UCLASS(Config = Game)
-class LYRAGAME_API ALyraPlayerState : public AModularPlayerState, public IAbilitySystemInterface, public ILyraTeamAgentInterface
+class LYRAGAME_API ALyraPlayerState : public AModularPlayerState, public IAbilitySystemInterface, public ILyraTeamAgentInterface, public ISaveableInterface
 {
 	GENERATED_BODY()
 
@@ -72,6 +73,7 @@ public:
 
 	//~APlayerState interface
 	virtual void Reset() override;
+	virtual void BeginPlay() override;
 	virtual void ClientInitialize(AController* C) override;
 	virtual void CopyProperties(APlayerState* PlayerState) override;
 	virtual void OnDeactivated() override;

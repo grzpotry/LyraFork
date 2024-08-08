@@ -24,6 +24,7 @@
 #include "ReplaySubsystem.h"
 #include "Development/LyraDeveloperSettings.h"
 #include "GameMapsSettings.h"
+#include "SaveStatics.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(LyraPlayerController)
 
@@ -57,6 +58,8 @@ void ALyraPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	SetActorHiddenInGame(false);
+
+	USaveStatics::RegisterSingletonSaveable(this, GetWorld());
 }
 
 void ALyraPlayerController::EndPlay(const EEndPlayReason::Type EndPlayReason)
